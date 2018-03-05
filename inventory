@@ -34,10 +34,10 @@ ansible_service_broker_remove=false
 ansible_service_broker_install=true
 
 [masters]
-192.168.64.50 openshift_public_hostname=192.168.64.50
+192.168.64.50 openshift_public_hostname=192.168.64.50 openshift_ip=10.0.2.15
 
 [etcd]
-192.168.64.50 openshift_ip=192.168.64.50
+192.168.64.50 openshift_ip=10.0.2.15
 
 [nodes]
-192.168.64.50 openshift_node_labels="{'region':'infra','zone':'default'}" openshift_public_hostname=192.168.64.50 openshift_schedulable=true
+192.168.64.50 openshift_node_labels="{'region':'infra','zone':'default'}" openshift_ip=10.0.2.15 openshift_public_hostname=192.168.64.50 openshift_schedulable=true
