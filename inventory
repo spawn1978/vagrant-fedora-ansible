@@ -6,14 +6,16 @@ etcd
 [OSEv3:vars]
 ansible_user=root
 
+public_ip_address=192.168.64.50
+
 # For Atomic VM
-containerized=true
+containerized=false
 
 openshift_release=v3.7
 openshift_image_tag=v3.7.0
 openshift_pkg_version="-3.7.0"
+
 openshift_deployment_type=origin
-openshift_enable_service_catalog=true
 
 openshift_hostname=192.168.64.50
 openshift_master_cluster_public_hostname=192.168.64.50
@@ -21,7 +23,7 @@ openshift_master_default_subdomain=192.168.64.50.nip.io
 openshift_disable_check=memory_availability,disk_availability,docker_image_availability
 openshift_master_unsupported_embedded_etcd=true
 
-public_ip_address=192.168.64.50
+openshift_enable_service_catalog=true
 
 ansible_python_interpreter=/usr/bin/python3
 
