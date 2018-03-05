@@ -15,7 +15,12 @@ vagrant up
 git clone -b release-3.7 https://github.com/openshift/openshift-ansible.git
 ```
 
-- Create OCP cluster
+- Import RPMs of OpenShift
+```bash
+ansible-playbook -i inventory install-package.yaml -e openshift_node=masters
+```
+
+- Create OpenShift cluster
 ```
 ansible-playbook -i inventory openshift-ansible/playbooks/byo/config.yml
 ```
