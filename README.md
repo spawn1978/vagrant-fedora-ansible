@@ -1,4 +1,4 @@
-# Fedora26 on Virtualbox
+# Install Openshift Cluster using ansible in a Fedora26 - VM provisioned by vagrant on Virtualbox
 
 - Download Fedora Cloud image from [here](https://alt.fedoraproject.org/cloud/)
 - Import the image as box into Vagrant 
@@ -21,6 +21,6 @@ ansible-playbook -i inventory install-package.yaml -e openshift_node=masters
 ```
 
 - Create OpenShift cluster
-```
+```bash
 ansible-playbook -i inventory openshift-ansible/playbooks/byo/config.yml
 ```
