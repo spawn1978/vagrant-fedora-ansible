@@ -20,6 +20,11 @@ git clone -b release-3.7 https://github.com/openshift/openshift-ansible.git
 ansible-playbook -i inventory install-package.yaml -e openshift_node=masters
 ```
 
+- Enable NetworkManager
+```bash
+ansible-playbook -i inventory enable_network-manager.yml -e openshift_node=masters
+```
+
 - Create OpenShift cluster
 ```bash
 ansible-playbook -i inventory openshift-ansible/playbooks/byo/config.yml
