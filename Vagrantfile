@@ -1,7 +1,7 @@
 $vmMemory = Integer(ENV['VM_MEMORY'] || 5000)
 
 # Override the default VM name appearing within VirtualBox
-$vmName = ENV['VM_NAME'] || "fedora26-openshift"
+$vmName = ENV['VM_NAME'] || "fedora26-ocp"
 
 # Private IP address to be used between the Host and the Guest but also the OpenShift Cluster
 $vmPrivateIP = ENV['VM_PRIVATE_IP'] || "192.168.64.50"
@@ -20,7 +20,6 @@ Vagrant.configure("2") do |config|
   config.landrush.guest_redirect_dns = false
   config.landrush.host_ip_address = $vmPrivateIP
 
-  config.vm.network "private_network", ip: $vmPrivateIP
   config.vm.hostname = $tld
 
   # Avoid to sync folder containing openshift_ansible as we ran it externally. Pass args to rsync to avoid "symlink has no referent" reported on MacOS
@@ -33,8 +32,10 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
 
+  config.vm.network "private_network", ip: $vmPrivateIP
+
   # Install Python 36
-  config.vm.provision "shell", inline: "sudo yum install python36"
+  # config.vm.provision "shell", inline: "sudo yum install python36"
 
   # Upload Public key
   config.vm.provision "shell" do |s|
