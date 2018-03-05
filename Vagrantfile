@@ -29,7 +29,18 @@ Vagrant.configure("2") do |config|
     v.name = $vmName
   end
 
-  config.vm.provision "shell", inline: "sudo yum install -y python27"
+  # Install Python 36
+  config.vm.provision "shell", inline: "sudo yum install -y python36"
+
+  # Upload Public key
+  config.vm.provision "shell" do |s|
+  ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
+  s.inline = <<-SHELL
+      echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_keys
+      echo #{ssh_pub_key} >> /root/.ssh/authorized_keys
+  SHELL
+  end
+
   
   # Uncomment the following block if you have a playbook at devel/ansible/playbook.yml you want Vagrant to run on the guest for you
   # # Ansible needs the guest to have these
