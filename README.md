@@ -22,10 +22,20 @@ ansible-playbook -i inventory install-package.yaml -e openshift_node=masters
 
 - Enable NetworkManager
 ```bash
-ansible-playbook -i inventory enable_network-manager.yml -e openshift_node=masters
+ansible-playbook -i inventory playbook/enable_network-manager.yml -e openshift_node=masters
 ```
 
 - Create OpenShift cluster
 ```bash
 ansible-playbook -i inventory openshift-ansible/playbooks/byo/config.yml
+```
+
+- Enable NetworkManager
+```bash
+ansible-playbook -i inventory playbook/enable_cluster_admin.yml -e openshift_node=masters
+```
+
+- Setup persistence
+```bash
+ansible-playbook -i inventory playbook/setup_persistence.yml -e openshift_node=masters
 ```

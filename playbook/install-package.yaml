@@ -24,7 +24,3 @@
         - origin-docker-excluder-3.7.0-1.0.7ed6862.noarch.rpm
         - origin-cluster-capacity-3.7.0-1.0.7ed6862.x86_64.rpm
         - origin-excluder-3.7.0-1.0.7ed6862.noarch.rpm
-
-#    - name: Install and Enable Network Manager
-#      shell: dnf -y install NetworkManager && sudo systemctl start NetworkManager && sudo systemctl enable NetworkManager
-#      become: true
